@@ -1,0 +1,168 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title]="title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row bg-content">
+                <div class="col-lg-9 fr-user fr-admin">
+                    <!--Email-->
+                    <div class="col-lg-12">
+                        <label>Email <span *ngIf="!_isEmailInput">*</span></label>
+                        <input [(ngModel)]="email" (change)="checkEmail()" (keyup)="checkEmail()" class="txt txt-email" name="email" type="text" placeholder="Email...">
+                    </div>
+                    <div *ngIf="!_isLegalEmail" class="col-lg-12 valid">
+                        <ul>
+                            <li [ngClass]="{'active': _isLegalEmail}"><i class="fa fa-check-circle-o"></i> <span>This is not a valid email form</span></li>
+                        </ul>
+                    </div>
+                    <!--Display name-->
+                    <div class="col-lg-12">
+                        <label>Display Name <span *ngIf="!_isDisplaynameInput">*</span></label>
+                        <input [(ngModel)]="displayname" (change)="checkDisplayname()" (keyup)="checkDisplayname()" class="txt txt-displayname" name="displayname" type="text" placeholder="Display name...">
+                    </div>
+                    <div *ngIf="!_isLegalDisplayname" class="col-lg-12 valid">
+                        <ul>
+                            <li [ngClass]="{'active': _isLegalDisplayname}"><i class="fa fa-check-circle-o"></i> <span>This is not a valid display name form</span></li>
+                        </ul>
+                    </div>
+                    <!--Password-->
+                    <div class="col-lg-12 eye">
+                        <label>Password <span *ngIf="!_isPasswordInput">*</span></label>
+                        <input [(ngModel)]="password" (change)="checkPassword()" (keyup)="checkPassword()" id="pass" class="txt txt-pass" name="pass" type="password">
+                        <a (click)="showPassword('pass')" href="javascript:void(0)"><span class="eye-icon"><i class="fa fa-eye"></i></span></a>
+                    </div>
+                    <div *ngIf="!_isLegalPassword" class="col-lg-12 valid">
+                        <ul>
+                            <li [ngClass]="{'active': _atLeastOneLowerCase}"><i class="fa fa-check-circle-o"></i> <span>One lowercase character</span></li>
+                            <li [ngClass]="{'active': _atLeastOneUpperCase}"><i class="fa fa-check-circle-o"></i> <span>One uppercase character</span></li>
+                            <li [ngClass]="{'active': _atLeastOneNumber}"><i class="fa fa-check-circle-o"></i> <span>One number</span></li>
+                            <li [ngClass]="{'active': _atLeastOneSpecialCharacter}"><i class="fa fa-check-circle-o"></i> <span>One special character</span></li>
+                            <li [ngClass]="{'active': _isValidPassword}"><i class="fa fa-check-circle-o"></i> <span>8-21 required characters</span></li>
+                        </ul>
+                    </div>
+                    <!--Firstname-->
+                    <div class="col-lg-6">
+                        <label>First Name <span *ngIf="!_isFirstnameInput">*</span></label>
+                        <input [(ngModel)]="firstname" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-firstname" name="first_name" type="text" placeholder="First Name...">
+                    </div>
+                    <!--Lastname-->
+                    <div class="col-lg-6">
+                        <label>Last Name <span *ngIf="!_isLastnameInput">*</span></label>
+                        <input [(ngModel)]="lastname" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-lastname" name="last_name" type="text" placeholder="Last Name...">
+                    </div>
+                    <!--Sex-->
+                    <div class="col-lg-12">
+                        <label>Gender <span *ngIf="!_isLegalSex">*</span></label>
+                        <select [(ngModel)]="sex" (change)="checkSex()" (keyup)="checkSex()" class="txt txt-sex">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <!--DOB-->
+                    <div class="col-lg-4">
+                        <label>DOB - Date <span *ngIf="!_isDateInput">*</span></label>
+                        <input [(ngModel)]="date_of_birth.date" (change)="checkDOB()" (keyup)="checkDOB()" class="txt txt-DOB" name="dob" type="number" min="1" max="31" placeholder="Date...">
+                    </div>
+                    <div class="col-lg-4">
+                        <label>DOB - Month <span *ngIf="!_isMonthInput">*</span></label>
+                        <input [(ngModel)]="date_of_birth.month" (change)="checkDOB()" (keyup)="checkDOB()" class="txt txt-DOB" name="dob" type="number" min="1" max="12" placeholder="Month...">
+                    </div>
+                    <div class="col-lg-4">
+                        <label>DOB - Year <span *ngIf="!_isYearInput">*</span></label>
+                        <input [(ngModel)]="date_of_birth.year" (change)="checkDOB()" (keyup)="checkDOB()" class="txt txt-DOB" name="dob" type="number" min="1970" max="2017" placeholder="Year...">
+                    </div>
+                    <div *ngIf="!_isLegalDateOfBirth" class="col-lg-12 valid">
+                        <ul>
+                            <li [ngClass]="{'active': _isLegalDateOfBirth}"><i class="fa fa-check-circle-o"></i> <span>This is not a valid datetime</span></li>
+                        </ul>
+                    </div>
+                    <!--Address-->
+                    <div class="col-lg-12">
+                        <label>Address <span *ngIf="!_isStreet1Input">*</span></label>
+                        <input [(ngModel)]="street1" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-address" name="address" type="text" placeholder="Address...">
+                    </div>
+                    <!--State-->
+                    <div class="col-lg-12">
+                        <label>State <span *ngIf="!_isStateInput">*</span></label>
+                        <input [(ngModel)]="state" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-state" name="state" type="text" placeholder="State...">
+                    </div>
+                    <!--City-->
+                    <div class="col-lg-6">
+                        <label>City <span *ngIf="!_isCityInput">*</span></label>
+                        <input [(ngModel)]="city" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-city" name="city" type="text" placeholder="City...">
+                    </div>
+                    <!--Country-->
+                    <div class="col-lg-6">
+                        <label>Country <span *ngIf="!_isLegalCountry">*</span></label>
+                        <select [(ngModel)]="country" (change)="checkCountry()" (keyup)="checkCountry()" class="txt txt-country">
+                            <option *ngFor="let item of country_list" value="{{item}}">{{item}}</option>
+                        </select>
+                    </div>
+                    <!--Zip code-->
+                    <div class="col-lg-12">
+                        <label>Zip Code <span *ngIf="!_isPostalCodeInput">*</span></label>
+                        <input [(ngModel)]="postal_code" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-zipcode" name="zipcode" type="text" placeholder="Zip Code...">
+                    </div>
+                    <!--EHT Address-->
+                    <div class="col-lg-12">
+                        <label>ETH Address <span *ngIf="!_isETHAddrInput">*</span></label>
+                        <input [(ngModel)]="ethaddress" (change)="checkCommon()" (keyup)="checkCommon()" class="txt txt-ethaddress" name="ethaddress" type="text" placeholder="ETH Address...">
+                    </div>
+                    <!--Type-->
+                    <div class="col-lg-6 type-step">
+                        <label>Type</label>
+                        <ul>
+                            <li>
+                                <input type="button" name="active" (click)="toogleBlackUser()" [ngClass]="{'btn-active active': !blackuser, 'btn-deactive': blackuser}"
+                                    value="Active">
+                            </li>
+                            <li>
+                                <input type="button" name="deactive" (click)="toogleBlackUser()" [ngClass]="{'btn-active active': blackuser, 'btn-deactive': !blackuser}"
+                                    value="Deactive">
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Agent-->
+                    <div class="col-lg-6 type-step">
+                        <label>Is an agent?</label>
+                        <ul>
+                            <li>
+                                <input type="button" name="active" (click)="toogleAgent()" [ngClass]="{'btn-active active': read_only, 'btn-deactive': !read_only}"
+                                    value="Yes">
+                            </li>
+                            <li>
+                                <input type="button" name="deactive" (click)="toogleAgent()" [ngClass]="{'btn-active active': !read_only, 'btn-deactive': read_only}"
+                                    value="No">
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Button-->
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button (click)="addUser()" name="kyc-ok" type="button" class="btn btnkyc-ok">ADD</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button (click)="cancel()" name="kyc-reject" type="button" class="btn btnkyc-reject">CANCEL</button>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-3">
+                    <div class="col-lg-12 fr-image">
+                        <label>Your Passport</label>
+                        <div class="fr-image-load"><span class="fa"><input type="file" class="image-choose"></span></div>
+                    </div>
+                    <div class="col-lg-12 fr-image">
+                        <label>Selfie With Passport</label>
+                        <div class="fr-image-load"><span class="fa"> <input type="file" class="image-choose"></span></div>
+                    </div>
+                    <div class="col-lg-12 fr-image">
+                        <label>Proof Of Address</label>
+                        <div class="fr-image-load"><span class="fa"> <input type="file" class="image-choose"></span></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,69 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title]="title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row fiter">
+                <div class="col-lg-4 col-md-4 col-sm-12 fiter-items">
+                    <ul class="fiter-list">
+                        <li>Total:</li>
+                        <li class="amount-coloruser">{{numberofuser}}</li>
+                        <li>users</li>
+                        <li>Show</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">{{numberofshow}}</div>
+                                <ul class="dropdown-content">
+                                    <li *ngFor="let item of listnumberofshow; let i = index"><a (click)="setNumberOfShow(item)" href="javascript:void(0)">{{item}}</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>entries</li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 fiter-search-items">
+                    <ul class="fiter-list">
+                        <li class="fa fr-search">
+                            <input name="search" class="txt-search" type="text" placeholder="Type here for search">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row bg-content table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showlist; let i = index">
+                            <!--Email-->
+                            <th scope="row">{{item.email}}</th>
+                            <!--Firstname-->
+                            <td>{{item.firstname}}</td>
+                            <!--Lastname-->
+                            <td>{{item.lastname}}</td>
+                            <!--Type-->
+                            <td *ngIf="item.type=='agent'"><span class="txt-agent"><i class="fa fa-user-circle-o"></i>Agent</span>
+                            <td *ngIf="item.type=='user'"><span class="txt-user"><i class="fa fa-user"></i> User</span></td>
+                            <!--Verify button-->
+                            <td class="txt-center"><a class="process-verify" [routerLink]="['/verifyuser/'+item.email]" href="javascript:void(0)"><span><i class="fa fa-wpforms"></i>verify</span></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Pagination-->
+            <pagination (notify)="handleNotify($event)"></pagination>
+        </div>
+    </div>
+</section>

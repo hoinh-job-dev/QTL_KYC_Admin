@@ -1,0 +1,98 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title]="title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row bg-content">
+                <div *ngIf="user" class="col-lg-9 fr-user fr-admin">
+                    <div *ngIf="user.firstname" class="col-lg-6">
+                        <label>First Name</label>
+                        <input class="txt txt-firstname" name="first_name" value={{user.firstname}} type="text" placeholder="First Name..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.lastname" class="col-lg-6">
+                        <label>Last Name</label>
+                        <input class="txt txt-lastname" name="last_name" value={{user.lastname}} type="text" placeholder="Last Name..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.email" class="col-lg-12">
+                        <label>Email</label>
+                        <input class="txt txt-email" name="email" value={{user.email}} type="text" placeholder="Email..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.date_of_birth" class="col-lg-12">
+                        <label>DOB</label>
+                        <input class="txt txt-DOB" name="dob" value={{user.date_of_birth}} type="text" placeholder="DOB..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.street1" class="col-lg-12">
+                        <label>Address</label>
+                        <input class="txt txt-address" name="address" value={{user.street1}} type="text" placeholder="Address..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.state" class="col-lg-12">
+                        <label>State</label>
+                        <input class="txt txt-state" name="state" value={{user.state}} type="text" placeholder="state..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.city" class="col-lg-6">
+                        <label>City</label>
+                        <input class="txt txt-city" name="city" value={{user.city}} type="text" placeholder="City..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.country" class="col-lg-6">
+                        <label>Country</label>
+                        <input class="txt txt-country" name="country" value={{user.country}} type="text" placeholder="Country..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.postal_code" class="col-lg-12">
+                        <label>Zip Code</label>
+                        <input class="txt txt-zipcode" name="zipcode" value={{user.postal_code}} type="text" placeholder="Zip Code..." readonly="readonly">
+                    </div>
+                    <div *ngIf="user.ETH_addr && user.ETH_addr.length > 0">
+                        <div *ngFor="let item of user.ETH_addr; let i = index" class="col-lg-12">
+                            <label>ETH Address {{i+1}}</label>
+                            <input class="txt txt-ethaddress" name="ethaddress" value={{item}} type="text" placeholder="ETH Address..." readonly="readonly">
+                        </div>
+                    </div>
+                    <div *ngIf="user.blackuser.toString()" class="col-lg-12 type-step">
+                        <label>Type</label>
+                        <ul>
+                            <li>
+                                <input type="button" name="active" [ngClass]="{'btn-active active': !user.blackuser, 'btn-deactive': user.blackuser}" value="Active">
+                            </li>
+                            <li>
+                                <input type="button" name="deactive" [ngClass]="{'btn-active active': user.blackuser, 'btn-deactive': !user.blackuser}" value="Deactive">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <button (click)="verifyUser(email,true)" name="kyc-ok" type="button" class="btn btnkyc-ok">VERIFY</button>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <button (click)="verifyUser(email,false)" name="kyc-reject" type="button" class="btn btnkyc-reject">REJECT</button>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <button (click)="cancel()" name="kyc-reject" type="button" class="btn btnkyc-reject">CANCEL</button>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="col-lg-12 fr-image">
+                        <label>Your Passport</label>
+                        <div class="fr-image-load">
+                            <img src="{{level3_passport}}" id="level3_passport" style="width: 194px; height: 154px; cursor: pointer; opacity: 1;">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 fr-image">
+                        <label>Selfie With Passport</label>
+                        <div class="fr-image-load">
+                            <img src="{{level3_you_with_passport}}" id="level3_you_with_passport" style="width: 194px; height: 154px; cursor: pointer; opacity: 1;">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 fr-image">
+                        <label>Proof Of Address</label>
+                        <div class="fr-image-load">
+                            <img src="{{level3_proof_of_address}}" id="level3_proof_of_address" style="width: 194px; height: 154px; cursor: pointer; opacity: 1;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

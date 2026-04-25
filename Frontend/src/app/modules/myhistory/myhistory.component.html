@@ -1,0 +1,73 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title] = "title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row fiter">
+                <div class="col-lg-4 col-md-4 col-sm-12 fiter-items">
+                    <ul class="fiter-list">
+                        <li>Show</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">{{numberofshow}}</div>
+                                <ul class="dropdown-content">
+                                    <li *ngFor="let item of listnumberofshow; let i = index"><a (click)="setNumberOfShow(item)" href="javascript:void(0)">{{item}}</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>entries</li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 fiter-search-items">
+                    <ul class="fiter-list">
+                        <li class="fa fr-search">
+                            <input name="search" class="txt-search" type="text" placeholder="Type here for search">
+                        </li>
+                        <li>Action</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">Select</div>
+                                <ul class="dropdown-content">
+                                    <li><a href="#">Add Admin</a></li>
+                                    <li><a href="#">Delect Member</a></li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li><a href="#">Change Name</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row bg-content table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Admin</th>
+                            <th>IP</th>
+                            <th>Action</th>
+                            <th>Memo</th>
+                            <th>Create At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showlist; let i = index">
+                            <th scope="row">{{item.username}}</th>
+                            <td>{{item.ip}}</td>
+                            <td>{{item.action}}</td>
+                            <td>{{item.memo}}</td>
+                            <td>{{item.createAt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Pagination-->
+            <pagination (notify)="handleNotify($event)"></pagination>
+        </div>
+    </div>
+</section>

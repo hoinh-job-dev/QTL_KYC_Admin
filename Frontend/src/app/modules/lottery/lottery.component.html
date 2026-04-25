@@ -1,0 +1,111 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title]="title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row fiter">
+                <div class="col-lg-4 col-md-4 col-sm-12 fiter-items">
+                    <ul class="fiter-list">
+                        <li>Total:</li>
+                        <li class="amount-coloruser">{{numberofuser}}</li>
+                        <li>users</li>
+                        <li>Show</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">{{numberofshow}}</div>
+                                <ul class="dropdown-content">
+                                    <li *ngFor="let item of listnumberofshow; let i = index"><a (click)="setNumberOfShow(item)" href="javascript:void(0)">{{item}}</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>entries</li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 fiter-search-items">
+                    <ul class="fiter-list">
+                        <li class="fa fr-search">
+                            <input name="search" class="txt-search" type="text" placeholder="Type here for search">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row bg-content table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Eth address</th>
+                            <th>Date</th>
+                            <th>Rº</th>
+                            <th>Ticket</th>
+                            <th>Prize</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showlist; let i = index">
+                            <!--#-->
+                            <td>{{i}}</td>
+                            <!--Email-->
+                            <td>{{item.email}}</td>
+                            <!--Ethereum address-->
+                            <td>{{item.winner}}</td>
+                            <!--Date-->
+                            <td>{{item.createdAt}}</td>
+                            <!--Round-->
+                            <td>{{item.round}}</td>
+                            <!--Number ticket-->
+                            <td>{{item.number_ticket}}</td>
+                            <!--Prize-->
+                            <td>{{item.prize}}</td>
+                            <!--Verify button-->
+                            <ng-container *ngIf="!item.isPaid">
+                                <td class="txt-center">
+                                    <a class="process-edit" (click)="payPrizes(item.email, true)" href="javascript:void(0)">
+                                        <span>
+                                            pay
+                                        </span>
+                                    </a>
+                                    <a class="process-reject" style="margin-left:10px;" (click)="payPrizes(item.email, false)" href="javascript:void(0)">
+                                        <span>
+                                            reject
+                                        </span>
+                                    </a>
+                                </td>
+                            </ng-container>
+                            <!--Status-->
+                            <ng-container *ngIf="!item.isPaid">
+                                <td class="txt-center">
+                                    <a class="process-verify" href="javascript:void(0)">
+                                        <span>
+                                            waiting
+                                        </span>
+                                    </a>
+                                </td>
+                            </ng-container>
+                            <ng-container *ngIf="item.isPaid">
+                                <td class="txt-center">
+                                    <a class="process-completed" href="javascript:void(0)">
+                                        <i class="fa fa-check-circle"></i>
+                                        <span>
+                                            completed
+                                        </span>
+                                    </a>
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Pagination-->
+            <pagination (notify)="handleNotify($event)"></pagination>
+        </div>
+    </div>
+</section>

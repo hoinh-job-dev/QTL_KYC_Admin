@@ -1,0 +1,32 @@
+<div class="body">
+    <div class="bg-admin">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 left">
+                <div class="col-lg-12 header-admin">
+                    <header>ADMIN</header>
+                    <p>Enter the spot</p>
+                </div>
+                <div class="col-lg-12 fr-sign">
+                    <form action="" method="get" class="fr-admin-sign" name="fr-admin-sign">
+                        <ul>
+                            <li><span><i class="fa fa-user"></i><input [(ngModel)]="username" name="sign-username" class="txt-sign sign-username" type="text" placeholder="Username" /></span></li>
+                            <li><span><i class="fa fa-lock"></i><input [(ngModel)]="password" name="sign-password" class="txt-sign sign-password" type="text" placeholder="Password" /></span></li>
+                            <li class="check">
+                                <input type="checkbox" id="test1" />
+                                <label for="test1">Remember me</label>
+                            </li>
+                            <li><button name="btn-submit" class="btn-submit fa" type="submit" (click)="login()">Enter</button></li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-9 right">
+                <img src="./../../public/img/b0n4-pef60q-crew.jpg" width="100%" title="" class="" alt />
+                <div class="txt-admin">
+                    <h2>Admin Dashboard</h2>
+                    <p>Where managerment all information of user</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

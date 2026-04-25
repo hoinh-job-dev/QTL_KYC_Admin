@@ -1,0 +1,71 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title] = "title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row bg-content">
+                <div class="col-lg-9 fr-admin">
+                    <div class="col-lg-6">
+                        <label>First Name <span *ngIf="!_isValidFirstname">*</span></label>
+                        <input [(ngModel)]="firstname" (change)="check()" (keyup)="check()" class="txt txt-firstname" name="first_name" type="text" placeholder="First Name...">
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Last Name <span *ngIf="!_isValidLastname">*</span></label>
+                        <input [(ngModel)]="lastname" (change)="check()" (keyup)="check()" class="txt txt-lastname" name="last_name" type="text" placeholder="Last Name...">
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Username <span *ngIf="!_isValidUsername">*</span></label>
+                        <input [(ngModel)]="username" (change)="check()" (keyup)="check()" class="txt txt-username" name="username" type="text" placeholder="Username...">
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Address <span *ngIf="!_isValidAddress">*</span></label>
+                        <input [(ngModel)]="address" (change)="check()" (keyup)="check()" class="txt txt-address" name="address" type="text" placeholder="Address...">
+                    </div>
+                    <div class="col-lg-12 type-step">
+                        <label>Type</label>
+                        <ul>
+                            <li>
+                                <input (click)="type('master')" name="master" type="button" [ngClass]="{'btn-active active': (role=='master'), 'btn-deactive': !(role=='master')}" value="Master">
+                            </li>
+                            <li>
+                                <input (click)="type('system')" name="system" type="button" [ngClass]="{'btn-active active': (role=='system'), 'btn-deactive': !(role=='system')}" value="System">
+                            </li>
+                            <li>
+                                <input (click)="type('operator')" name="operator" type="button" [ngClass]="{'btn-active active': (role=='operator'), 'btn-deactive': !(role=='operator')}" value="Operator">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12 eye">
+                        <label>Password <span>*</span></label>
+                        <input [(ngModel)]="newPassword" (change)="check()" (keyup)="check()" id="newpass" class="txt txt-newpass" name="newpass" type="password" placeholder="New password...">
+                        <a (click)="showPassword('newpass')" href="javascript:void(0)"><span class="eye-icon"><i class="fa fa-eye"></i></span></a>
+                    </div>
+                    <div [ngClass]="{'col-lg-12 eye': true, 'mess-vaild': !_comparePassword}">
+                        <input [(ngModel)]="confirmPassword" (change)="check()" (keyup)="check()" id="confirmpass" class="txt txt-confirmpass" name="confirmpass" type="password" placeholder="Confirm password...">
+                        <a (click)="showPassword('confirmpass')" href="javascript:void(0)"><span class="eye-icon eye-icon-confirm"><i class="fa fa-eye"></i></span></a>
+                        <p *ngIf="!_comparePassword" class=""><i class="fa fa-level-up"></i> Password does not match</p>
+                    </div>
+                    <div class="col-lg-12 valid">
+                        <ul>
+                            <li [ngClass]="{'active': _atLeastOneLowerCase}"><i class="fa fa-check-circle-o"></i> <span>One lowercase character</span></li>
+                            <li [ngClass]="{'active': _atLeastOneUpperCase}"><i class="fa fa-check-circle-o"></i> <span>One uppercase character</span></li>
+                            <li [ngClass]="{'active': _atLeastOneNumber}"><i class="fa fa-check-circle-o"></i> <span>One number</span></li>
+                            <li [ngClass]="{'active': _atLeastOneSpecialCharacter}"><i class="fa fa-check-circle-o"></i> <span>One special character</span></li>
+                            <li [ngClass]="{'active': _isValidPassword}"><i class="fa fa-check-circle-o"></i> <span>8-21 required characters</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button (click)="addAdmin()" name="kyc-ok" type="button" class="btn btnkyc-ok">SAVE</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button (click)="cancel()" name="kyc-reject" type="button" class="btn btnkyc-reject">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

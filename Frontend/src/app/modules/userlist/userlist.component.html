@@ -1,0 +1,135 @@
+<!--Sidebar-->
+<sidebar-left></sidebar-left>
+<!--Content-->
+<section class="body-content">
+    <div class="content">
+        <!--Header-->
+        <header [title]="title"></header>
+        <!--Body-->
+        <div class="">
+            <div class="row fiter">
+                <div class="col-lg-4 col-md-4 col-sm-4 fiter-items">
+                    <ul class="fiter-list">
+                        <li>Total:</li>
+                        <li class="amount-coloruser">{{numberofuser}}</li>
+                        <li>user</li>
+                        <li>Show</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">{{numberofshow}}</div>
+                                <ul class="dropdown-content">
+                                    <li *ngFor="let item of listnumberofshow; let i = index"><a (click)="setNumberOfShow(item)" href="javascript:void(0)">{{item}}</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>entries</li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 fiter-search-items">
+                    <ul class="fiter-list">
+                        <li class="fa fr-search">
+                            <input name="search" class="txt-search" type="text" placeholder="Type here for search">
+                        </li>
+                        <li>Status</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">Select</div>
+                                <ul class="dropdown-content">
+                                    <li><a href="#">Verify</a>
+                                    </li>
+                                    <li><a href="#">Reject</a>
+                                    </li>
+                                    <li><a href="#">Complete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Type</li>
+                        <li>
+                            <div class="dropdown">
+                                <input class="dropdown-toggle" type="text">
+                                <div class="dropdown-text">Select</div>
+                                <ul class="dropdown-content">
+                                    <li><a href="#">Agent</a>
+                                    </li>
+                                    <li><a href="#">User</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><button name="add-new" class="btn-add-new" type="button"><i class="fa fa-plus-circle"></i> Add New</button></li>
+                        <li><button name="delete-item" class="btn-delete-item cd-popup-trigger" type="button"><i class="fa fa-trash"></i> Delete</button></li>
+                    </ul>
+                </div>
+                <div class="cd-popup fr-confirm" role="alert">
+                    <div class="cd-popup-container">
+                        <div class="pop-content">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-warning"></i>
+                                </li>
+                                <li>
+                                    <span>Are you sure you want to delete</span>
+                                </li>
+                                <li>
+                                    <button class="btn-save" type="button">OK</button>
+                                    <button class="btn-cancel" type="button">CANCEL</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- cd-popup-container -->
+                </div>
+                <!-- cd-popup -->
+            </div>
+            <div class="row bg-content table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="test1" />
+                                <label class="mar-top" for="test1"></label>
+                            </th>
+                            <th>Email</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Status</th>
+                            <th>Type</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showlist; let i = index">
+                            <!--Checkbox-->
+                            <th>
+                                <input type="checkbox" id="test2" />
+                                <label class="mar-top" for="test2"></label>
+                            </th>
+                            <!--Email-->
+                            <th scope="row">{{item.email}}</th>
+                            <!--Firstname-->
+                            <td>{{item.firstname}}</td>
+                            <!--Lastname-->
+                            <td>{{item.lastname}}</td>
+                            <!--Status-->
+                            <td *ngIf="item.level3_is_verified == 'verified'"><span class="process-completed"><i class="fa fa-check-circle"></i></span></td>
+                            <td *ngIf="item.level3_is_verified == 'notyet'"><a class="process-verify" [routerLink]="['/verifyuser/'+item.email]" href="javascript:void(0)"><span><i class="fa fa-wpforms"></i>verify</span></a></td>
+                            <td *ngIf="item.level3_is_verified == 'rejected'" class="txt-center"><span class="process-reject"><i class="fa fa-undo"></i>reject</span></td>
+                            <!--Type-->
+                            <td *ngIf="item.type=='agent'"><span class="txt-agent"><i class="fa fa-user-circle-o"></i>Agent</span></td>
+                            <td *ngIf="item.type=='user'"><span class="txt-user"><i class="fa fa-user"></i> User</span></td>
+                            <!--Edit button-->
+                            <td>
+                                <a [routerLink]="['/edituser/'+item.email]" href="javascript:void(0)" class="process-edit"><span><i class="fa fa-edit "></i> edit</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Pagination-->
+            <pagination (notify)="handleNotify($event)"></pagination>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+<div class="title-header">
+    <span>{{title}}</span>
+</div>
+<div class="admin-panel">
+    <ul>
+        <li>
+            <i class="fa fa-user"></i>
+            <span>{{admin}}</span>
+        </li>
+        <li>
+            <a href="javascript:;" class="toggle" id="menu-toggle1"><i class="fa fa-sign-in"></i></a>
+            <ul class="menu" data-menu data-menu-toggle="#menu-toggle1, #menu-toggle2">
+                <li>
+                    <a [routerLink]="['/changepassword']" href="javascript:void(0)">Change Password</a>
+                </li>
+                <li>
+                    <a (click)="logout()" href="javascript:void(0)">Log out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

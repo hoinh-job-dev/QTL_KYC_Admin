@@ -1,0 +1,71 @@
+# Error access data
+error_500 = error_500
+
+# User has exist
+error_100 = error_100
+
+# Username is not valid
+error_101 = error_101
+
+# Password is not valid
+error_102 = error_102
+
+# Captcha is not valid
+error_103 = error_103
+
+# Saving session fails
+error_104 = error_104
+
+# Cannot log out
+error_105 = error_105
+
+# Lack of input data
+error_106 = error_106
+
+# Log action fails
+error_107 = error_107
+
+# Not login yet
+error_108 = error_108
+
+# Error crypto
+error_109 = error_109
+
+# Privilege error
+error_110 = error_110
+
+# Have no type of that admin
+error_111 = error_111
+
+# Filter error
+error_112 = error_112
+
+#
+error_113 = error_113
+
+# KYC is not existed
+error_114 = error_114
+
+# Duplicate user info (hash)
+error_115 = error_115
+
+# Invalid ethereum address
+error_116 = error_116
+
+# 
+error_117 = error_117
+
+# 
+error_118 = error_118
+
+# Transaction fails
+error_119 = error_119
+
+# Cannot unlock account
+error_120 = error_120
+
+# 
+error_121 = error_121
+
+# 
+error_122 = error_122

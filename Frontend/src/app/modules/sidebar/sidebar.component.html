@@ -1,0 +1,61 @@
+<aside class="sidebar-left">
+    <div id="nav-icon1">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="slide-menu">
+        <header><span>agent admin</span>
+        </header>
+        <ul id="accordion" class="accordion">
+            <li><a [routerLink]="['/dashboard']" href="javascript:void(0)"><i class="fa fa-dashboard" ></i> Dashboard</a></li>
+            <li><a class="link" id="users" (click)="dropdown('users')" href="javascript:void(0)"><i class="fa fa-user" ></i> Users <span>+</span></a>
+                <ul class="submenu">
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/userlist']" href="javascript:void(0)">User List</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/verifyuser']" href="javascript:void(0)">Verify User</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/adduser']" href="javascript:void(0)">Add User</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="link" id="lottery" (click)="dropdown('lottery')" href="javascript:void(0)"><i class="fa fa-users" ></i> Lottery <span>+</span></a>
+                <ul class="submenu">
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/lottery/all']" href="javascript:void(0)">All list</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/lottery/verify']" href="javascript:void(0)">Only verification</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/lottery/paid']" href="javascript:void(0)">Only payment</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/lotteryhistory']" href="javascript:void(0)">Request History</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="link" id="admin" (click)="dropdown('admin')" href="javascript:void(0)"><i class="fa fa-user-circle-o" ></i> Admin <span>+</span></a>
+                <ul class="submenu">
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/addadmin']" href="javascript:void(0)">Add Admin</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/adminlist']" href="javascript:void(0)">Admin List</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/adminhistory']" href="javascript:void(0)">History</a>
+                    </li>
+                    <li>
+                        <div class="border"></div><a [routerLink]="['/changepassword']" href="javascript:void(0)">Change Pwd</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a [routerLink]="['/myhistory']" href="javascript:void(0)"><i class="fa fa-history" ></i> My History</a>
+            </li>
+        </ul>
+    </div>
+</aside>

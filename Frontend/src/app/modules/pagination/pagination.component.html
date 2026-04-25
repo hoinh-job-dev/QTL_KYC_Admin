@@ -1,0 +1,15 @@
+<div class="pagination">
+    <ul>
+        <li>
+            <a (click)="prev()" href="javascript:void(0)"><span><i class="fa fa-angle-left"></i> PREV</span></a>
+        </li>
+
+        <li *ngFor="let item of list_of_page"  [ngClass]="{'active': item==current_page}">
+            <a (click)="step(item)" href="javascript:void(0)"><span>{{item+1}}</span></a>
+        </li>
+
+        <li>
+            <a (click)="next()" href="javascript:void(0)"><span>NEXT <i class="fa fa-angle-right"></i> </span></a>
+        </li>
+    </ul>
+</div>
