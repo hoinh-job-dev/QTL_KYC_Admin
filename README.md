@@ -56,4 +56,14 @@ POST /verifyuser
 POST /verifyuser/:email
 POST /edituser/:email
 
+## Quick Start
+ - Initialize Database (If you ensure you have ever run it, skip to the next scripts).
+ npm run db
+
+ - Run Admin Server
+
+ npm install
+ npm start
+ 
+
 
