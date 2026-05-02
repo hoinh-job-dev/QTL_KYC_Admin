@@ -11,7 +11,7 @@ var development = {
     KYC_server: 'mongodb://localhost:27017/qtl_KYC',
     lotterydb_server: 'mongodb://localhost:27017/qtl_lotterydb',
     mongo: {
-        auth: true,
+        auth: false,
         options: {
             auth: {
                 authdb: "admin"

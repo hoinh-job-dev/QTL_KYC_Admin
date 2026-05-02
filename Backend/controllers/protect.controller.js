@@ -1,5 +1,5 @@
 var config = global.config;
-var Web3 = require('web3');
+var {Web3} = require('web3');
 var crypto = require('./../lib/crypto');
 
 var User = require('./../db/user/user');
@@ -7,7 +7,8 @@ var KYC = require('./../db/kyc/KYC');
 var EthereumAddress = require('./../db/user/ethereum_address');
 
 var transactionConfig = config.transactionConfig;
-var web3 = new Web3(new Web3.providers.HttpProvider(transactionConfig.httpProvider));
+//var web3 = new Web3(new Web3.providers.HttpProvider(transactionConfig.httpProvider));
+var web3 = new Web3(transactionConfig.httpProvider);
 
 
 function isNotSmartContract(ethaddr, callback) {

@@ -60,4 +60,15 @@ var ClaimedPrizes = mongoose.Schema({
     }
 });
 
-module.exports = global.lotterydb_connection.model('ClaimedPrizes', ClaimedPrizes);
+
+modelClaimedPrizes= null;
+db = global.lotterydb_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to lotteryDB model ClaimedPrizes')
+    modelClaimedPrizes = db.model('ClaimedPrizes', ClaimedPrizes);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.lotterydb_connection.model('ClaimedPrizes', ClaimedPrizes);
+module.exports = modelClaimedPrizes;

@@ -22,4 +22,15 @@ var ClaimHistory = mongoose.Schema({
     }
 });
 
-module.exports = global.lotterydb_connection.model('ClaimHistory', ClaimHistory);
+modelClaimHistory= null;
+db = global.lotterydb_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to lotteryDB model ClaimHistory')
+    modelClaimHistory = db.model('ClaimHistory', ClaimHistory);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+
+//module.exports = global.lotterydb_connection.model('ClaimHistory', ClaimHistory);
+module.exports = modelClaimHistory;

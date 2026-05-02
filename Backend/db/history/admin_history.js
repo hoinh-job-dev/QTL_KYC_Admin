@@ -23,5 +23,15 @@ var AdminHistory = new mongoose.Schema({
     },
 });
 
+modelAdminHistory= null;
+db = global.historydb_connection;
 
-module.exports = global.historydb_connection.model('AdminHistory', AdminHistory);
+db.on('connected', () => {console.log('Mongoose connected to historyDB model AdminHistory')
+    modelAdminHistory = db.model('AdminHistory', AdminHistory);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+
+//module.exports = global.historydb_connection.model('AdminHistory', AdminHistory);
+module.exports = modelAdminHistory;

@@ -211,4 +211,14 @@ KYC.post('init', function (kyc, next) {
     return next();
 });
 
-module.exports = global.KYC_connection.model('KYC', KYC);
+modelKYC= null;
+db = global.KYC_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to kycDB model KYC')
+    modelKYC = db.model('KYC', KYC);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.KYC_connection.model('KYC', KYC);
+module.exports = modelKYC;

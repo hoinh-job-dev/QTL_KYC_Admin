@@ -52,4 +52,14 @@ Admin.methods.verifyPassword = function (password, callback) {
     });
 };
 
-module.exports = global.admin_connection.model('Admin', Admin);
+modelAdmin= null;
+db = global.admin_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to DB Admin')
+    modelAdmin = db.model('Admin', Admin);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.admin_connection.model('Admin', Admin);
+module.exports = modelAdmin;

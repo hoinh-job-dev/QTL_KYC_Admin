@@ -28,5 +28,14 @@ var AdminToken = new mongoose.Schema({
     }
 });
 
+modelAdminToken= null;
+db = global.authdb_connection;
 
-module.exports = global.authdb_connection.model('AdminToken', AdminToken);
+db.on('connected', () => {console.log('Mongoose connected to authDB model AdminToken')
+    modelAdminToken = db.model('AdminToken', AdminToken);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.authdb_connection.model('AdminToken', AdminToken);
+module.exports = modelAdminToken;

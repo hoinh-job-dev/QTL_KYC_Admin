@@ -26,4 +26,14 @@ EthereumAddress.pre('save', function (next) {
     });
 });
 
-module.exports = global.userdb_connection.model('EthereumAddress', EthereumAddress);
+modelEthereumAddress= null;
+db = global.userdb_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to userDB model EthereumAddress')
+    modelEthereumAddress = db.model('EthereumAddress', EthereumAddress);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.userdb_connection.model('EthereumAddress', EthereumAddress);
+module.exports = modelEthereumAddress;

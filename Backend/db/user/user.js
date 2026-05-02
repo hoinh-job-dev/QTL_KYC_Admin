@@ -132,4 +132,14 @@ User.statics.findOneByEmail = function (email, callback) {
     else return callback(ERROR, null);
 }
 
-module.exports = global.userdb_connection.model('User', User);
+modelUser= null;
+db = global.userdb_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to UserDB model User')
+    modelUser = db.model('User', User);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.userdb_connection.model('User', User);
+module.exports = modelUser;

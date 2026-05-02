@@ -1,6 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var propertiesReader = require('properties-reader');
+var {propertiesReader} = require('properties-reader');
 var properties = propertiesReader('./properties.file');
 var bodyParser = require('body-parser');
 var passport = require('passport');

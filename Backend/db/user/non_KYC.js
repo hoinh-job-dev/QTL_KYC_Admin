@@ -53,4 +53,14 @@ non_KYC.post('init', function (non_kyc, next) {
     return next();
 });
 
-module.exports = global.userdb_connection.model('non_KYC', non_KYC);
+modelnon_KYC= null;
+db = global.userdb_connection;
+
+db.on('connected', () => {console.log('Mongoose connected to userDB model non_KYC')
+    modelnon_KYC = db.model('non_KYC', non_KYC);
+});
+db.on('error', (err) => console.error('Connection error:', err));
+db.on('disconnected', () => console.log('Mongoose disconnected'));
+
+//module.exports = global.userdb_connection.model('non_KYC', non_KYC);
+module.exports = modelnon_KYC;

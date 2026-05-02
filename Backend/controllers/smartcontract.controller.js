@@ -1,4 +1,4 @@
-var Web3 = require('web3');
+var {Web3} = require('web3');
 var async = require('async');
 var config = global.config;
 var utils = require('./../lib/utils');
@@ -7,7 +7,8 @@ var utils = require('./../lib/utils');
  * Web3 config
  */
 var transactionConfig = config.transactionConfig;
-var web3 = new Web3(new Web3.providers.HttpProvider(transactionConfig.httpProvider));
+//var web3 = new Web3(new Web3.providers.HttpProvider(transactionConfig.httpProvider));
+var web3 = new Web3(transactionConfig.httpProvider);
 var primeAddress = transactionConfig.primeAccount.address;
 var primePassphrase = transactionConfig.primeAccount.passphrase;
 
